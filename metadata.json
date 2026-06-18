@@ -1,0 +1,6 @@
+{
+  "name": "BotVault",
+  "description": "Complete WhatsApp Business Bot for LBtech featuring automated mobile data sales, AI assignment solving, and academic document generation.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

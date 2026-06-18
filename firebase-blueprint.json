@@ -1,0 +1,64 @@
+{
+  "entities": {
+    "Order": {
+      "title": "Order",
+      "description": "Represents a business order for data, assignments, or documents.",
+      "type": "object",
+      "properties": {
+        "phone": { "type": "string" },
+        "type": { "type": "string" },
+        "planId": { "type": "string" },
+        "planName": { "type": "string" },
+        "network": { "type": "string" },
+        "amount": { "type": "number" },
+        "phoneNumber": { "type": "string" },
+        "txRef": { "type": "string" },
+        "status": { "type": "string" },
+        "createdAt": { "type": "string" },
+        "details": { "type": "object" }
+      },
+      "required": ["phone", "type", "amount", "txRef", "status"]
+    },
+    "Fulfillment": {
+      "title": "Fulfillment",
+      "description": "Represents an order delivery task to be fulfilled and sent via WhatsApp.",
+      "type": "object",
+      "properties": {
+        "orderId": { "type": "string" },
+        "txRef": { "type": "string" },
+        "type": { "type": "string" },
+        "phoneNumber": { "type": "string" },
+        "recipient": { "type": "string" },
+        "status": { "type": "string" },
+        "data": { "type": "object" },
+        "createdAt": { "type": "string" }
+      },
+      "required": ["orderId", "txRef", "type", "recipient", "status"]
+    },
+    "Session": {
+      "title": "Session",
+      "description": "Represents a WhatsApp bot conversational session for status tracking.",
+      "type": "object",
+      "properties": {
+        "state": { "type": "string" },
+        "data": { "type": "object" },
+        "updatedAt": { "type": "string" }
+      },
+      "required": ["state", "updatedAt"]
+    }
+  },
+  "firestore": {
+    "orders/{orderId}": {
+      "schema": { "$ref": "#/entities/Order" },
+      "description": "All transactions and service orders."
+    },
+    "fulfillments/{fulfillmentId}": {
+      "schema": { "$ref": "#/entities/Fulfillment" },
+      "description": "Pending and completed deliveries for AI assignments, doc generations, and data."
+    },
+    "sessions/{sessionId}": {
+      "schema": { "$ref": "#/entities/Session" },
+      "description": "User sessions and conversation state tracking."
+    }
+  }
+}
